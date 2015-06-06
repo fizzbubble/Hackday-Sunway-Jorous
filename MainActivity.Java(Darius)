@@ -1,0 +1,79 @@
+package com.example.darius.androidscheduler;
+
+
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class MainActivity extends ListActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        String[] Floors = new String[] {"B2","B1","UG","M","1","2","3","4","5","6","7","8","9","10"};
+
+        String[][] BuildingRooms = new String[12][11];
+
+        for(int x = 1; x <= 10; x++){
+            for(int y = 1; y<= 10; y++) {
+                 BuildingRooms[x][y] = String.format("Room NB %s - %s", x, y);
+            }
+
+        }
+
+
+        final ListView listView = (ListView) findViewById(android.R.id.list);
+
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Floors);
+        listView.setAdapter(itemsAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object listItem = listView.getItemAtPosition(position);
+            }
+        });
+
+
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+
+
+
+
+}
