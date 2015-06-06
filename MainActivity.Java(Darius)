@@ -38,14 +38,25 @@ public class MainActivity extends ListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                // Alright so this calls the method "navigateTo" you can check it below
+                // navigateTo(position)
+                // So u might be wondering what the fuck is position
+                // Position is the position of the item the user clicks (Starts from index 0 etc)
             }
         });
-
-
-
     }
 
+    /* This method will navigate to wherever the fuck u want based on the values u passed in.
+    private void navigateTo(int position) {
+        if (position == 0) {
+            Intent intent = new Intent(this, TheFuckingClassYouWantToGoTo.class);
+            startActivity(intent);
+        }
+        else if (position == 1) {
+            Intent intent = new Intent(this, TheSameFuckingThing.class);
+        }
+    }
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
